@@ -76,10 +76,10 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
     reserved: true
   }
   sku: {
-    name: 'P0v3'
-    tier: 'Premium0V3'
-    size: 'P0v3'
-    family: 'Pv3'
+    name: 'B1'
+    tier: 'Basic'
+    size: 'B1'
+    family: 'B'
     capacity: 1
   }
   kind: 'linux'
@@ -98,7 +98,7 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
       appCommandLine: 'next start'
       ftpsState: 'Disabled'
       minTlsVersion: '1.2'
-      appSettings: [ 
+      appSettings: [
         {
           name: 'AZURE_COSMOSDB_KEY'
           value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::AZURE_COSMOSDB_KEY.name})'
@@ -115,23 +115,23 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
           name: 'AZURE_SEARCH_API_KEY'
           value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::AZURE_SEARCH_API_KEY.name})'
         }
-        { 
+        {
           name: 'AZURE_SEARCH_API_VERSION'
           value: searchServiceAPIVersion
         }
-        { 
+        {
           name: 'AZURE_SEARCH_NAME'
           value: search_name
         }
-        { 
+        {
           name: 'AZURE_SEARCH_INDEX_NAME'
           value: searchServiceIndexName
         }
-        { 
+        {
           name: 'AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT'
           value: 'https://${form_recognizer_name}.cognitiveservices.azure.com/'
         }
-        { 
+        {
           name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
           value: 'true'
         }
@@ -174,7 +174,7 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
       ]
     }
   }
-  identity: { type: 'SystemAssigned'}
+  identity: { type: 'SystemAssigned' }
 }
 
 resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
@@ -253,7 +253,6 @@ resource kv 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
       value: speechService.listKeys().key1
     }
   }
-
 
   resource AZURE_SEARCH_API_KEY 'secrets' = {
     name: 'AZURE-SEARCH-API-KEY'
