@@ -26,6 +26,7 @@
     },
     "openAILocation": {
       "type": "string",
+      "defaultValue": "eastus",
       "allowedValues": [
         "canadaeast",
         "eastus",
@@ -549,7 +550,7 @@
                 "resource": {
                   "id": "[variables('containerName')]",
                   "partitionKey": {
-                    "paths": ["/userId"],
+                    "paths": [ "/userId" ],
                     "kind": "Hash"
                   },
                   "defaultTtl": 86400
