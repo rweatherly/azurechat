@@ -14,8 +14,8 @@ param embeddingDeploymentCapacity int = 30
 param embeddingModelName string = 'text-embedding-ada-002'
 
 param speechServiceSkuName string = 'S0'
-param formRecognizerSkuName string = 'S0'
-param searchServiceSkuName string = 'standard'
+param formRecognizerSkuName string = 'F0'
+param searchServiceSkuName string = 'basic'
 param searchServiceIndexName string = 'azure-chat'
 param searchServiceAPIVersion string = '2023-07-01-Preview'
 

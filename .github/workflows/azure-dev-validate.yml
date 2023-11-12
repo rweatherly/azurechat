@@ -5,14 +5,15 @@ on:
     branches:
       - main
       - master
+      - develop
   pull_request:
     branches:
       - main
       - master
+      - develop
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
